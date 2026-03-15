@@ -125,6 +125,20 @@ function Remove-Summary {
 	#$last | Out-File $logFile -Append
 }
 
+
+#Script start
+###1
+$replacementPath = Join-Path $PSSriptRoot "DayTracker.ps1"
+try {
+	Invoke-WebRequest -Uri "https://raw.githubusercontent.com/MichaelRDube/DayTrackerGit/refs/heads/main/DayTracker.ps1" -OutFile $replacementPath
+}
+catch {
+	Write-Host "Could not check for updates"
+	Write-Host "$_"
+	Write-Error "$($_.ScriptStackTrace)"
+}
+
+
 $AggregateActivities = @{}
 $lastCheckIn = Get-Date
 $currentCheckIn = $lastCheckIn
