@@ -18,9 +18,20 @@ function Pull-Update {
 	}
 }
 
+function Log-Setup {
+	param(
+		[string]today
+	)
+	
+	New-Item -ItemType Directory -Path $logFolder -Force | Out-Null
+
+}
+
 #Pull-Update
 
 $AggregateActivities = @{}
 $lastCheckIn = Get-Date
 $currentCheckIn = $lastCheckIn
 
+$logFolder = Join-Path $PSScriptRoot "MyDays"
+$logFile = Join-Path $logFolder "MyDay $($lastCheckIn.ToString('MM-dd-yyyy')).txt"
