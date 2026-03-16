@@ -128,7 +128,7 @@ function Remove-Summary {
 
 #Script start
 ###1
-$replacementPath = Join-Path $PSSriptRoot "DayTracker.ps1"
+$replacementPath = Join-Path $PSScriptRoot "DayTracker.ps1"
 try {
 	Invoke-WebRequest -Uri "https://raw.githubusercontent.com/MichaelRDube/DayTrackerGit/refs/heads/main/DayTracker.ps1" -OutFile $replacementPath
 }
